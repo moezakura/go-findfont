@@ -24,10 +24,10 @@ go get -u github.com/flopp/go-findfont
 
 import (
   "fmt"
-	"io/ioutil"
-
+  "io/ioutil"
+  
   "github.com/flopp/go-findfont"
-	"github.com/golang/freetype/truetype"
+  "github.com/golang/freetype/truetype"
 )
 
 func main() {
