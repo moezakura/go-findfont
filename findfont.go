@@ -29,21 +29,21 @@ func Find(fileName string) (filePath string, err error) {
 
 // List returns a list of all font files found on the system.
 func List() (filePaths []string) {
-    pathList := []string{}
-    
-    walkF := func(path string, info os.FileInfo, err error) error {
+	pathList := []string{}
+
+	walkF := func(path string, info os.FileInfo, err error) error {
 		if err == nil {
-    		if info.IsDir() == false && strings.HasSuffix(strings.ToLower(path), ".ttf") {
-                pathList = append(pathList, path)
-		  }
-        }
-        return nil
-    }
+			if info.IsDir() == false && strings.HasSuffix(strings.ToLower(path), ".ttf") {
+				pathList = append(pathList, path)
+			}
+		}
+		return nil
+	}
 	for _, dir := range getFontDirectories() {
 		filepath.Walk(dir, walkF)
 	}
-    
-    return pathList
+
+	return pathList
 }
 
 func stripExtension(fileName string) string {

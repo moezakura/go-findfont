@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-    for _, path := range findfont.List() {
-        fmt.Println(path)
+	for _, path := range findfont.List() {
+		fmt.Println(path)
 	}
 }
