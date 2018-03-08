@@ -26,7 +26,7 @@ func getUserFontDirs() (paths []string) {
 }
 
 func getSystemFontDirs() (paths []string) {
-	if dataPaths := os.Getenv("XDG_DATA_DIRS"); dataPaths == "" {
+	if dataPaths := os.Getenv("XDG_DATA_DIRS"); dataPaths != "" {
 		for _, dataPath := range filepath.SplitList(dataPaths) {
 			paths = append(paths, filepath.Join(expandUser(dataPath), "fonts"))
 		}
