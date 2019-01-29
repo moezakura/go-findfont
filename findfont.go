@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"os"
 	"os/user"
-	"path"
 	"path/filepath"
 	"strings"
 )
@@ -24,7 +23,7 @@ func Find(fileName string) (filePath string, err error) {
 	}
 
 	// search in user and system directories
-	return find(path.Base(fileName))
+	return find(filepath.Base(fileName))
 }
 
 // List returns a list of all font files found on the system.
