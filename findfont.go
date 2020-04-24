@@ -32,7 +32,13 @@ func List() (filePaths []string) {
 
 	walkF := func(path string, info os.FileInfo, err error) error {
 		if err == nil {
-			if info.IsDir() == false && strings.HasSuffix(strings.ToLower(path), ".ttf") {
+			lowerPath := strings.ToLower(info.Name())
+
+			if info.IsDir() == false &&
+				(strings.HasSuffix(lowerPath, ".ttf") ||
+					strings.HasSuffix(lowerPath, ".otf") ||
+					strings.HasSuffix(lowerPath, ".otc") ||
+					strings.HasSuffix(lowerPath, ".ttc")) {
 				pathList = append(pathList, path)
 			}
 		}
@@ -77,7 +83,11 @@ func find(needle string) (filePath string, err error) {
 
 		lowerPath := strings.ToLower(info.Name())
 
-		if info.IsDir() == false && strings.HasSuffix(lowerPath, ".ttf") {
+		if info.IsDir() == false &&
+			(strings.HasSuffix(lowerPath, ".ttf") ||
+				strings.HasSuffix(lowerPath, ".otf") ||
+				strings.HasSuffix(lowerPath, ".otc") ||
+				strings.HasSuffix(lowerPath, ".ttc")) {
 			lowerBase := stripExtension(lowerPath)
 			if lowerPath == lowerNeedle {
 				// exact match
